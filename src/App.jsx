@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { formatTimerNumber } from './utils';
 import useInterval from './UseInterval';
 
@@ -10,6 +10,12 @@ export default function App() {
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
+
+  useEffect(() => {
+    document.title = `${formatTimerNumber(minutes)}:${formatTimerNumber(
+      seconds
+    )}`;
+  }, [minutes, seconds]);
 
   useInterval(
     () => {
