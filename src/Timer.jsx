@@ -47,11 +47,6 @@ export default function Timer({ focusTime, breakTime }) {
     setIsPaused((cur) => !cur);
   }
 
-  function handleReset() {
-    setIsPaused(true);
-    setTimeLeft(maxTime);
-  }
-
   function handleFocus() {
     setIsPaused(true);
     setMode('focus');
@@ -87,14 +82,10 @@ export default function Timer({ focusTime, breakTime }) {
       <span className="clock__timer">
         {formatTimerNumber(minutes)}:{formatTimerNumber(seconds)}
       </span>
-      <div className="clock__buttons">
-        <button onClick={handleToggleClock} className="clock__toggle">
-          {isPaused ? 'Start' : 'Pause'}
-        </button>
-        <button onClick={handleReset} className="clock__reset">
-          Reset
-        </button>
-      </div>
+
+      <button onClick={handleToggleClock} className="clock__toggle">
+        {isPaused ? 'Start' : 'Pause'}
+      </button>
     </div>
   );
 }
