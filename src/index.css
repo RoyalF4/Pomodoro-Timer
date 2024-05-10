@@ -1,0 +1,42 @@
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(238, 100%, 50%);
+  font-family: 'Roboto Mono';
+}
+
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: hsl(238, 60%, 50%);
+  max-width: 300px;
+  padding: 1em 5em;
+}
+
+.clock__timer {
+  display: block;
+  font-weight: 500;
+  font-size: 8rem;
+}
+
+.clock__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.clock__toggle,
+.clock__reset {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5em 2em;
+  border-radius: 3px;
+  border: none;
+}
+
+.button-up {
+  box-shadow: 0 5px black;
+}
