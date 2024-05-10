@@ -3,10 +3,17 @@ import { useState, useEffect } from 'react';
 import { formatTimerNumber } from './utils';
 import useInterval from './UseInterval';
 
-export default function Timer({ focusTime }) {
+Timer.propTypes = {
+  focusTime: PropTypes.number,
+  breakTime: PropTypes.number,
+};
+
+export default function Timer({ focusTime, breakTime }) {
+  const [mode, setMode] = useState('focus');
   const [timeLeft, setTimeLeft] = useState(focusTime);
   const [isPaused, setIsPaused] = useState(true);
 
+  const maxTime = mode === 'focus' ? focusTime : breakTime;
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
@@ -34,7 +41,7 @@ export default function Timer({ focusTime }) {
   function handleToggleClock() {
     // if start is clicked and timer is at 0, set timeLeft to max
     if (isPaused && timeLeft === 0) {
-      setTimeLeft(focusTime);
+      setTimeLeft(maxTime);
     }
 
     setIsPaused((cur) => !cur);
@@ -42,11 +49,41 @@ export default function Timer({ focusTime }) {
 
   function handleReset() {
     setIsPaused(true);
+    setTimeLeft(maxTime);
+  }
+
+  function handleFocus() {
+    setIsPaused(true);
+    setMode('focus');
     setTimeLeft(focusTime);
+  }
+
+  function handleBreak() {
+    setIsPaused(true);
+    setMode('break');
+    setTimeLeft(breakTime);
   }
 
   return (
     <div className="clock">
+      <div className="clock__mode">
+        <button
+          onClick={handleFocus}
+          className={`clock__mode__button ${
+            mode === 'focus' ? 'selected' : ''
+          }`}
+        >
+          Pomodoro
+        </button>
+        <button
+          onClick={handleBreak}
+          className={`clock__mode__button ${
+            mode === 'break' ? 'selected' : ''
+          }`}
+        >
+          Break
+        </button>
+      </div>
       <span className="clock__timer">
         {formatTimerNumber(minutes)}:{formatTimerNumber(seconds)}
       </span>
