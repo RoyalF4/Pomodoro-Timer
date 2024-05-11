@@ -57,6 +57,12 @@
   border: none;
   width: 180px;
   cursor: pointer;
+  box-shadow: 0 5px rgb(187, 185, 185);
+}
+
+.clock__toggle-pause {
+  box-shadow: none;
+  transform: translateY(5px);
 }
 
 .mode-message {

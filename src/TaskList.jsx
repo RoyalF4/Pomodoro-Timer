@@ -19,7 +19,6 @@ export default function TaskList() {
           <Task key={task.id} task={task.task} />
         ))}
       </div>
-
       {showAdd && (
         <AddTaskPrompt onAddPrompt={setShowAdd} onAddTask={setTaskList} />
       )}

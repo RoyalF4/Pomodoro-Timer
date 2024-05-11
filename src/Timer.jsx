@@ -84,7 +84,10 @@ export default function Timer({ focusTime, breakTime, mode, setMode }) {
         {formatTimerNumber(minutes)}:{formatTimerNumber(seconds)}
       </span>
 
-      <button onClick={handleToggleClock} className="clock__toggle">
+      <button
+        onClick={handleToggleClock}
+        className={`clock__toggle ${isPaused ? '' : 'clock__toggle-pause'}`}
+      >
         {isPaused ? 'Start' : 'Pause'}
       </button>
     </div>
