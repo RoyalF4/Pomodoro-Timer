@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Timer from './Timer';
-import TaskList from './Task';
+import TaskList from './TaskList';
 
 const FOCUS_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;

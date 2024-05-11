@@ -1,13 +1,13 @@
-export default function TaskList() {
+import PropTypes from 'prop-types';
+
+Task.propTypes = {
+  task: PropTypes.string,
+};
+
+export default function Task({ task }) {
   return (
-    <div className="tasks">
-      <h2>Task</h2>
-      <div className="line-break"></div>
-      <div className="tasks__list"></div>
-      <button className="task__btn-add">
-        <i className="fa-solid fa-plus" style={{ color: '#0008ff' }}></i>Add
-        Task
-      </button>
+    <div className="task__item">
+      <p>{task}</p>
     </div>
   );
 }
