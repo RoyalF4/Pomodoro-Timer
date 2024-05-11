@@ -5,6 +5,7 @@
   align-items: center;
   background-color: hsl(238, 100%, 50%);
   font-family: 'Roboto Mono';
+  color: white;
 }
 
 .clock {
