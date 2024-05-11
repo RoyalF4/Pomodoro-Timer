@@ -6,10 +6,11 @@ import useInterval from './UseInterval';
 Timer.propTypes = {
   focusTime: PropTypes.number,
   breakTime: PropTypes.number,
+  mode: PropTypes.string,
+  setMode: PropTypes.func,
 };
 
-export default function Timer({ focusTime, breakTime }) {
-  const [mode, setMode] = useState('focus');
+export default function Timer({ focusTime, breakTime, mode, setMode }) {
   const [timeLeft, setTimeLeft] = useState(focusTime);
   const [isPaused, setIsPaused] = useState(true);
 
