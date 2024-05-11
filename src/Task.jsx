@@ -1,4 +1,4 @@
-export default function Task() {
+export default function TaskList() {
   return (
     <div className="tasks">
       <h2>Task</h2>

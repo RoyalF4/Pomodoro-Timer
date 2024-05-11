@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Timer from './Timer';
-import Task from './Task';
+import TaskList from './Task';
 
 const FOCUS_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
@@ -18,7 +18,7 @@ export default function App() {
       <span className="mode-message">
         {mode === 'focus' ? 'Time to focus!' : 'Time for a break!'}
       </span>
-      <Task />
+      <TaskList />
     </main>
   );
 }
