@@ -93,11 +93,20 @@
   margin-bottom: 10px;
 }
 
-.task__item {
+.item {
+  display: flex;
   background: white;
   color: black;
   padding: 1em;
   border-radius: 5px;
+}
+
+.item__name {
+  flex: 1;
+}
+
+.icon-delete {
+  cursor: pointer;
 }
 
 .input-add {

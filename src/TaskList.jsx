@@ -16,7 +16,7 @@ export default function TaskList() {
       <div className="line-break"></div>
       <div className="tasks__list">
         {taskList.map((task) => (
-          <Task key={task.id} task={task.task} />
+          <Task key={task.id} task={task} onDelete={setTaskList} />
         ))}
       </div>
       {showAdd && (
