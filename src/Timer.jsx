@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { formatTimerNumber } from './utils';
 import useInterval from './UseInterval';
+import toggleSound from './assets/button.wav';
 
 Timer.propTypes = {
   focusTime: PropTypes.number,
@@ -40,6 +41,7 @@ export default function Timer({ focusTime, breakTime, mode, setMode }) {
   }, [seconds, minutes]);
 
   function handleToggleClock() {
+    new Audio(toggleSound).play();
     // if start is clicked and timer is at 0, set timeLeft to max
     if (isPaused && timeLeft === 0) {
       setTimeLeft(maxTime);
