@@ -12,7 +12,9 @@ Timer.propTypes = {
 };
 
 export default function Timer({ focusTime, breakTime, mode, setMode }) {
-  const [timeLeft, setTimeLeft] = useState(focusTime);
+  const [timeLeft, setTimeLeft] = useState(
+    mode === 'focus' ? focusTime : breakTime
+  );
   const [isPaused, setIsPaused] = useState(true);
 
   const maxTime = mode === 'focus' ? focusTime : breakTime;
@@ -33,12 +35,17 @@ export default function Timer({ focusTime, breakTime, mode, setMode }) {
     isPaused
   );
 
-  // if timer hits 00:00, pause it
+  // if timer hits 00:00, stop timer and switch to next mode
   useEffect(() => {
     if (seconds === 0 && minutes === 0) {
       setIsPaused(true);
+      setMode((mode) => (mode === 'focus' ? 'break' : 'focus'));
     }
-  }, [seconds, minutes]);
+  }, [seconds, minutes, setMode]);
+
+  useEffect(() => {
+    setTimeLeft(mode === 'focus' ? focusTime : breakTime);
+  }, [mode, focusTime, breakTime]);
 
   function handleToggleClock() {
     new Audio(toggleSound).play();
