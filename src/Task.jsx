@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 Task.propTypes = {
-  task: PropTypes.string,
+  task: PropTypes.object,
   onDelete: PropTypes.func,
 };
 
