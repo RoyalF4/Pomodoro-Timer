@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { formatTimerNumber } from './utils';
 import useInterval from './UseInterval';
 import toggleSound from './assets/button.wav';
+import timerSound from './assets/egg-timer.wav';
 
 Timer.propTypes = {
   focusTime: PropTypes.number,
@@ -38,6 +39,7 @@ export default function Timer({ focusTime, breakTime, mode, setMode }) {
   // if timer hits 00:00, stop timer and switch to next mode
   useEffect(() => {
     if (seconds === 0 && minutes === 0) {
+      new Audio(timerSound).play();
       setIsPaused(true);
       setMode((mode) => (mode === 'focus' ? 'break' : 'focus'));
     }
