@@ -72,7 +72,7 @@ export default function Timer({ focusTime, breakTime, mode, setMode }) {
   }
 
   return (
-    <div className="flex flex-col items-center bg-blue-500 max-w-76 px-20 py-4 mb-8">
+    <div className="flex flex-col items-center bg-blue-500 max-w-76 px-20 py-4 mb-8 rounded-md">
       <div className="flex gap-3">
         <button
           onClick={handleFocus}

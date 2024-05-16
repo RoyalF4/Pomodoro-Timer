@@ -15,6 +15,7 @@ export default function AddTaskPrompt({ onAddPrompt, onAddTask }) {
   }
 
   function handleSaveTask() {
+    if (!task) return;
     onAddPrompt(false);
     onAddTask((list) => [...list, { id: uuidv4(), task }]);
   }
