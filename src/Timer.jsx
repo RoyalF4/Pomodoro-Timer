@@ -72,32 +72,34 @@ export default function Timer({ focusTime, breakTime, mode, setMode }) {
   }
 
   return (
-    <div className="clock">
-      <div className="clock__mode">
+    <div className="flex flex-col items-center bg-blue-500 max-w-76 px-20 py-4 mb-8">
+      <div className="flex gap-3">
         <button
           onClick={handleFocus}
-          className={`clock__mode__button ${
-            mode === 'focus' ? 'selected' : ''
+          className={`font-4 px-1 py-2 bg-none border-none rounded cursor-pointer ${
+            mode === 'focus' ? 'bg-selected font-bold' : 'font-normal'
           }`}
         >
           Pomodoro
         </button>
         <button
           onClick={handleBreak}
-          className={`clock__mode__button ${
-            mode === 'break' ? 'selected' : ''
+          className={`font-4 px-1 py-2 bg-none border-none rounded cursor-pointer ${
+            mode === 'break' ? 'bg-selected font-bold' : 'font-normal'
           }`}
         >
           Break
         </button>
       </div>
-      <span className="clock__timer">
+      <span className="block font-medium text-9xl my-1 overflow-hidden">
         {formatTimerNumber(minutes)}:{formatTimerNumber(seconds)}
       </span>
 
       <button
         onClick={handleToggleClock}
-        className={`clock__toggle ${isPaused ? '' : 'clock__toggle-pause'}`}
+        className={`text-2xl font-semibold bg-white text-blue-500 uppercase py-2 px-8 rounded-lg border-none w-44 cursor-pointer  ${
+          isPaused ? 'shadow-toggleBtn' : 'shadow-none translate-y-1'
+        }`}
       >
         {isPaused ? 'Start' : 'Pause'}
       </button>

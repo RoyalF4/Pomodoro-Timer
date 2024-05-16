@@ -15,10 +15,16 @@ export default function App() {
         mode={mode}
         setMode={setMode}
       />
-      <span className="mode-message">
+      <span className="block text-center mb-4">
         {mode === 'focus' ? 'Time to focus!' : 'Time for a break!'}
       </span>
       <TaskList />
     </main>
   );
 }
+
+// TODO: allow users to adjust timers dynamically
+// TODO: change colors between modes
+// TODO: ability to edit task
+// TODO: make timer responsive
+// TODO: store/retrieve task from local storage

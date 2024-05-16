@@ -12,11 +12,11 @@ export default function Task({ task, onDelete }) {
     onDelete((list) => list.filter((t) => t.id !== task.id));
   }
   return (
-    <div className="item">
-      <p className="item__name">{task.task}</p>
+    <div className="flex bg-white text-black p-4 rounded">
+      <p className="grow">{task.task}</p>
       <FontAwesomeIcon
         icon={faTrashCan}
-        className="icon-delete"
+        className="cursor-pointer"
         size="lg"
         onClick={handleDelete}
       />

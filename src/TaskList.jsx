@@ -11,10 +11,10 @@ export default function TaskList() {
   }
 
   return (
-    <div className="tasks">
-      <h2 className="tasks__heading">Task</h2>
-      <div className="line-break"></div>
-      <div className="tasks__list">
+    <div className="flex flex-col">
+      <h2 className="font-semibold mb-4">Task</h2>
+      <div className="border-b-2 border-white mb-4"></div>
+      <div className="flex flex-col gap-1 mb-8">
         {taskList.map((task) => (
           <Task key={task.id} task={task} onDelete={setTaskList} />
         ))}
@@ -23,11 +23,14 @@ export default function TaskList() {
         <AddTaskPrompt onAddPrompt={setShowAdd} onAddTask={setTaskList} />
       )}
       {!showAdd && (
-        <button className="tasks__btn-add" onClick={handleAddTask}>
-          <span className="icon-add">
+        <button
+          className="flex items-center justify-center py-4 rounded-md cursor-pointer bg-addTaskBg border-dashed border-2 border-addTaskBorder"
+          onClick={handleAddTask}
+        >
+          <span className="flex items-center justify-center bg-white rounded-full h-6 w-6 p-1 mr-2">
             <i className="fa-solid fa-plus" style={{ color: '#0008ff' }}></i>
           </span>
-          Add Task
+          <span>Add Task</span>
         </button>
       )}
     </div>
