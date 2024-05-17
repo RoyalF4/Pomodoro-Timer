@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-export default function useInterval(callback, interval, isPaused) {
-  const savedCallback = useRef(null);
+export default function useInterval(
+  callback: Function,
+  interval: number,
+  isPaused: boolean
+) {
+  const savedCallback = useRef<Function | null>(null);
 
   useEffect(() => {
     savedCallback.current = callback;
@@ -10,7 +14,7 @@ export default function useInterval(callback, interval, isPaused) {
   useEffect(() => {
     if (interval && !isPaused) {
       let id = setInterval(() => {
-        savedCallback.current();
+        savedCallback.current?.();
       }, interval);
       return () => clearInterval(id);
     }
