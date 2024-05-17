@@ -1,15 +1,17 @@
-import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
-Task.propTypes = {
-  task: PropTypes.object,
-  onDelete: PropTypes.func,
-};
-
-export default function Task({ task, onDelete }) {
+export default function Task({
+  task,
+  onDelete,
+}: {
+  task: { task: string; id: string };
+  onDelete: Function;
+}) {
   function handleDelete() {
-    onDelete((list) => list.filter((t) => t.id !== task.id));
+    onDelete((list: []) =>
+      list.filter((t: { id: string }) => t.id !== task.id)
+    );
   }
   return (
     <div className="flex bg-white text-black p-4 rounded">
