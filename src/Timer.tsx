@@ -1,18 +1,22 @@
-import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { formatTimerNumber } from './utils';
 import useInterval from './UseInterval';
 import toggleSound from './assets/button.wav';
 import timerSound from './assets/egg-timer.wav';
 
-Timer.propTypes = {
-  focusTime: PropTypes.number,
-  breakTime: PropTypes.number,
-  mode: PropTypes.string,
-  setMode: PropTypes.func,
+type TimerProps = {
+  focusTime: number;
+  breakTime: number;
+  mode: string;
+  setMode: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export default function Timer({ focusTime, breakTime, mode, setMode }) {
+export default function Timer({
+  focusTime,
+  breakTime,
+  mode,
+  setMode,
+}: TimerProps) {
   const [timeLeft, setTimeLeft] = useState(
     mode === 'focus' ? focusTime : breakTime
   );

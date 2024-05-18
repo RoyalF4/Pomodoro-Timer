@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import AddTaskPrompt from './AddTaskPrompt';
-import Task from './Task';
+import TaskItem from './TaskItem';
+import { type Task } from './types';
 
 export default function TaskList() {
   const [showAdd, setShowAdd] = useState(false);
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState<Task[]>([]);
 
   function handleAddTask() {
     setShowAdd(true);
@@ -16,7 +17,7 @@ export default function TaskList() {
       <div className="border-b-2 border-white mb-4"></div>
       <div className="flex flex-col gap-1 mb-8">
         {taskList.map((task) => (
-          <Task key={task.id} task={task} onDelete={setTaskList} />
+          <TaskItem key={task.id} task={task} onDelete={setTaskList} />
         ))}
       </div>
       {showAdd && (

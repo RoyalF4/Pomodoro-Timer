@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { type Task } from './types';
 
-export default function Task({
-  task,
-  onDelete,
-}: {
-  task: { task: string; id: string };
+type TaskProps = {
+  task: Task;
   onDelete: Function;
-}) {
+};
+
+export default function TaskItem({ task, onDelete }: TaskProps) {
   function handleDelete() {
     onDelete((list: []) =>
       list.filter((t: { id: string }) => t.id !== task.id)

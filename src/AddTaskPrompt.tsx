@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
+import { type Task } from './types';
 
-AddTaskPrompt.propTypes = {
-  onAddPrompt: PropTypes.func,
-  onAddTask: PropTypes.func,
+type AddTaskPromptProps = {
+  onAddPrompt: React.Dispatch<React.SetStateAction<boolean>>;
+  onAddTask: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
-export default function AddTaskPrompt({ onAddPrompt, onAddTask }) {
+export default function AddTaskPrompt({
+  onAddPrompt,
+  onAddTask,
+}: AddTaskPromptProps) {
   const [task, setTask] = useState('');
 
-  function handleChange(e) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTask(e.target.value);
   }
 
