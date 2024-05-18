@@ -25,6 +25,5 @@ export default function App() {
 
 // TODO: allow users to adjust timers dynamically
 // TODO: change colors between modes
-// TODO: ability to edit task
 // TODO: make timer responsive
 // TODO: store/retrieve task from local storage

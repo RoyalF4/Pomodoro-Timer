@@ -2,10 +2,12 @@ import { useState } from 'react';
 import AddTaskPrompt from './AddTaskPrompt';
 import TaskItem from './TaskItem';
 import { type Task } from './types';
+import useLocalStorage from './UseLocalStorage';
 
 export default function TaskList() {
   const [showAdd, setShowAdd] = useState(false);
-  const [taskList, setTaskList] = useState<Task[]>([]);
+  //const [taskList, setTaskList] = useState<Task[]>([]);
+  const [taskList, setTaskList] = useLocalStorage<Task[]>([], 'task');
 
   function handleAddTask() {
     setShowAdd(true);
