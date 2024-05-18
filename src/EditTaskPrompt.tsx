@@ -1,36 +1,39 @@
-import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { type Task } from './types';
 
-type AddTaskPromptProps = {
-  onAddPrompt: React.Dispatch<React.SetStateAction<boolean>>;
-  onAddTask: React.Dispatch<React.SetStateAction<Task[]>>;
+type EditTaskPromptProps = {
+  task: Task;
+  onEditTask: React.Dispatch<React.SetStateAction<Task[]>>;
+  onEdit: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function AddTaskPrompt({
-  onAddPrompt,
-  onAddTask,
-}: AddTaskPromptProps) {
-  const [task, setTask] = useState('');
+  task,
+  onEditTask,
+  onEdit,
+}: EditTaskPromptProps) {
+  const [name, setName] = useState(task.task);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTask(e.target.value);
+    setName(e.target.value);
   }
 
   function handleSaveTask(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!task) return;
-    onAddPrompt(false);
-    onAddTask((list) => [...list, { id: uuidv4(), task }]);
+    if (!name) return;
+    onEditTask((tasks) =>
+      tasks.map((t) => (task.id === t.id ? { ...t, task: name } : t))
+    );
+    onEdit(false);
   }
 
   function handleCancelTask() {
-    onAddPrompt(false);
+    onEdit(false);
   }
   return (
     <form onSubmit={handleSaveTask} className="flex flex-col">
       <input
-        value={task}
+        value={name}
         onChange={handleChange}
         type="text"
         name="name"
@@ -49,7 +52,6 @@ export default function AddTaskPrompt({
         <button
           type="submit"
           className="text-white bg-gray-700 border-none rounded px-4 py-2 cursor-pointer hover:bg-black"
-          //onClick={handleSaveTask}
         >
           Save
         </button>

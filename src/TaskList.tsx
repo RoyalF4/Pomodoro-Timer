@@ -17,7 +17,12 @@ export default function TaskList() {
       <div className="border-b-2 border-white mb-4"></div>
       <div className="flex flex-col gap-1 mb-8">
         {taskList.map((task) => (
-          <TaskItem key={task.id} task={task} onDelete={setTaskList} />
+          <TaskItem
+            key={task.id}
+            task={task}
+            onDelete={setTaskList}
+            onEditTask={setTaskList}
+          />
         ))}
       </div>
       {showAdd && (
