@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="pb-4">
       <span>
-        Created by
+        {`Created by `}
         <a
           className="underline"
           href="https://github.com/RoyalF4"
