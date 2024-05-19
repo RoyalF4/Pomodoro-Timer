@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Timer from './Timer';
 import TaskList from './TaskList';
 import Header from './Header';
+import useLocalStorage from './UseLocalStorage';
 
 // const FOCUS_TIME = 25 * 60;
 // const BREAK_TIME = 5 * 60;
@@ -17,7 +18,11 @@ type UserSettings = {
 
 export default function App() {
   const [mode, setMode] = useState('focus');
-  const [settings, setSettings] = useState(defaultSettings);
+  // get settings from local storage
+  const [settings, setSettings] = useLocalStorage<UserSettings>(
+    defaultSettings,
+    'settings'
+  );
   return (
     <>
       <Header settings={settings} setSettings={setSettings} />
@@ -37,7 +42,6 @@ export default function App() {
   );
 }
 
-// TODO: allow users to adjust timers dynamically
 // TODO: change colors between modes
 // TODO: make timer responsive
 // TODO: store/retrieve task from local storage
