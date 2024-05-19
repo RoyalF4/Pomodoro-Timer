@@ -3,6 +3,7 @@ import Timer from './Timer';
 import TaskList from './TaskList';
 import Header from './Header';
 import useLocalStorage from './UseLocalStorage';
+import Footer from './Footer';
 
 // const FOCUS_TIME = 25 * 60;
 // const BREAK_TIME = 5 * 60;
@@ -38,10 +39,10 @@ export default function App() {
         </span>
         <TaskList />
       </main>
+      <Footer />
     </>
   );
 }
 
 // TODO: change colors between modes
 // TODO: make timer responsive
-// TODO: store/retrieve task from local storage
